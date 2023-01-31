@@ -105,7 +105,7 @@ height: 410px;
 overflow: scroll;
 overflow-x: hidden;
 }
-.music-box: :-webkit-scrollbar
+.music-box::-webkit-scrollbar
 {
  width: 0px;
  background: transparent;
@@ -115,7 +115,7 @@ overflow-x: hidden;
 margin-right: 10px;
 margin-top: 22px;
 font-weight: normal;
-color: #elelel;
+color: #e1e1e1;
 cursor: pointer;
 }
 .music-info
@@ -157,7 +157,7 @@ cursor: pointer;
   font-size: 10px;
   line-height: 1px;
   letter-spacing: 0.5px;
-  color: #elelel;
+  color: #e1e1e1;
   cursor: pointer;
 }
 hr 
