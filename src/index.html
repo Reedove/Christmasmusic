@@ -155,18 +155,6 @@
 </div>
 
 
-
-      
-        <h12>Vanilla App</h12>
-        <p>Loading cont from  API: <b id="name">...</b></p>
-        
-    
-        <script>
-        (async function() {
-            const { text } = await( await fetch(`/api/getartistinfo`)).json();
-            document.querySelector('#name').textContent = text;
-        }());
-        </script>
   </body>
 
 </html>
