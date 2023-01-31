@@ -9,7 +9,7 @@ html, body {
   background-color: #ccc !important;
   color: #fff !important;
 }
-.music-container
+music-container
 {
   font-family: sans-serif;
   width: 350px;
@@ -20,30 +20,30 @@ html, body {
   position: absolute;
   background-image: linear-gradient(#6c6cff,#6b3636);
 }
-.music-header
+music-header
 {
   width: 100%;
   height: 50px;
   border-bottom: 1px solid #555;
   background-image: linear-gradient(#6b3636, #6c6cff );
 }
-.music-header .fa-angle-left
+music-header .fa-angle-left
 {
   float: left;
   margin-top: 15px;
   margin-left: 10px;
   cursor: pointer;
 }
-.music-header .fa-search
+music-header .fa-search
 {
   float: right;
   margin-top: 15px;
   margin-right: 10px;
   cursor: pointer;
 }
-.music-header .title
+music-header .title
 {
-  width: 250ppx;
+  width: 250px;
   height: 30px;
   position: absolute;
   margin-left: 30px; 
@@ -52,7 +52,7 @@ html, body {
   padding-left: 10px
 
 }
-.music-playlist 
+music-playlist 
 {
     width: 100%;
    height: 450px;
@@ -62,7 +62,7 @@ music-menu
   width: 100%;
   height: 20px;
 }
-.menu ul
+menu-menu
 {
   width: 275px;
   height: 16px;
@@ -70,18 +70,18 @@ music-menu
   border-radius: 10px;
   border: 1px solid #fff;
 }
-ul
+menu-menu ul
 {
  font-size: 10px;
  padding: initial;
 }
-ul li
+menu-menu ul li
 {
   list-style-type: none;
   display: inline-block;
   border-right: 1px solid #fff;
 }
-.menu ul li a
+menu-menu ul li a
 {
   color: #fff;
   padding: 5px 15px;
@@ -89,7 +89,7 @@ ul li
   letter-spacing: 0.5px;
 
 }
-.menu ul li:last-child
+menu-menu ul li:last-child
 {
   border-right: none;
 }
@@ -98,14 +98,14 @@ main {
   width: 50%;
   padding: 20px;
 }
-.music-box
+music-box
 {
 width: 100%;
 height: 410px;
 overflow: scroll;
 overflow-x: hidden;
 }
-.music-box::-webkit-scrollbar
+music-box::-webkit-scrollbar
 {
  width: 0px;
  background: transparent;
