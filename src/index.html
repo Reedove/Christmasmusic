@@ -1,409 +1,205 @@
 <!DOCTYPE html>
-<html lang="it">
+{% load static %}
+<html>
     <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>My Spotify</title>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous"/>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
-        <link rel="stylesheet" href="./assets/css/style.css">
-        <link rel="shortcut icon" href="./assets/img/favicon.ico" type="image/x-icon">
+        <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+        <meta charset="utf-8">
+        <!-- Bootstrap -->
+        <link href="{% static 'css/bootstrap-fluid-adj.css' %}" rel="stylesheet">
+        <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" media="screen">
+        <link href="{% static 'css/slider.css' %}" rel="stylesheet" media="screen">
+
+        <!-- CSS -->
+        <link href="{% static 'css/style.css' %}" rel="stylesheet">
+        <link href="{% static 'css/hover.css' %}" rel="stylesheet" media="all">
+
+        <!--Javascript-->
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+        <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+        <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+
+        <!-- Google Fonts -->
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans|Roboto:400,700|Oxygen:400,700|Montserrat' rel='stylesheet' type='text/css'>
+
+        <title>{% block title %}Spotify{% endblock %}</title>
     </head>
-    <body class="overflow-hidden bg-dark-blue">
-        <div class="container-fluid d-flex px-0">
-            <!-- Left sidebar --> 
-            <nav id="sidebar" class="d-flex justify-content-between flex-column fixed-left flex-shrink-0 px-0 text-grey bg-black">
-                <div class="wrapper">
-                    <!-- Logo -->
-                    <a href="/" id="logo" class="d-flex align-items-center py-3 pl-3 disappear">
-                        <img src="./assets/img/logo.svg" class="w-75" alt="Spotify logo">
-                    </a>
-                    <!-- /Logo -->
 
-                    <!-- Logo for XS devices -->
-                    <a class="d-none appear mb-4" href="/">
-                        <img src="./assets/img/logo-small.svg" alt="Small Spotify logo">
-                    </a>
-                    <!-- /Logo for XS devices -->
-    
-                    <!-- Sidebar options -->
-                    <ul id="sidebar_options" class="px-0 disappear">
-                        <li class="position-relative pl-3 mb-2">
-                            <a class="d-flex align-items-center" href="#">
-                                <img id="home" src="./assets/img/home.svg" alt="Icon depicting a house">
-                                <span class="ml-2 text-white">Home</span>
-                            </a>                    
-                        </li>
-    
-                        <li class="pl-3 mb-2">
-                            <a class="d-flex align-items-center" href="#">
-                                <img src="./assets/img/search.svg" alt="Icon depicting a magnifying glass">
-                                <span class="ml-2">Cerca</span>
-                            </a>                            
-                        </li>
-    
-                        <li class="pl-3 mb-2">
-                            <a class="d-flex align-items-center" href="#">
-                                <img src="./assets/img/libreria.svg" class="img-fluid" alt="Icon depicting three vertical books">
-                                <span class="ml-2">La tua libreria</span>
-                            </a>
-                        </li>
-                    </ul>
-                    <!-- /Sidebar options -->
+    <body>
 
-                    <!-- Sidebar options for XS devices -->
-                    <div class="d-none appear">
-                        <a href="#" class="d-block mb-3">
-                            <img src="./assets/img/home.svg" alt="Icon depicting a house">
-                        </a>
+	<div class="container">
+	<div class="col-md-8 col-md-offset-2">
+		<center>
+	    <h1>Twitterfy</h1>
+	    <div id="results"></div>
+		</center>
+	</div>
+	</div>
+    <div id="song-title">
 
-                        <a href="#" class="d-block mb-3">
-                            <img src="./assets/img/search.svg" alt="Icon depicting a magnifying glass">
-                        </a>
+    </div>
 
-                        <a href="#" class="d-block mb-3">
-                            <img src="./assets/img/libreria.svg" class="img-fluid" alt="Icon depicting three vertical books">
-                        </a>
-                    </div>
-                    <!-- /Sidebar options for XS devices -->
-                    
-                    <!-- Playlist options -->
-                    <ul id="playlist_options" class="pl-3 pr-0 disappear">
-                        <li>
-                            <div class="text-uppercase text-white">Playlist</div>
-                        </li>
-    
-                        <li class="my-3">
-                            <a href="#" class="create_playlist d-flex align-items-center">
-                                <div class="d-flex justify-content-center align-items-center square text-black bg-grey">
-                                    <i class="fas fa-plus"></i>
-                                </div>
-                                <div class="ml-2">Crea Playlist</div>
-                            </a>
-                        </li>
+    <div id="song-lyrics">
 
-                        <li id="playlist_entries">
-                            <ul class="px-0">
-                                <li class="mb-3">
-                                    <a id="playlist_1" href="#">Nome Playlist</a>
-                                </li>
-            
-                                <li class="my-3">
-                                    <a id="playlist_2" href="#">Nome Playlist</a>
-                                </li>
-            
-                                <li class="my-3">
-                                    <a id="playlist_3" href="#">Nome Playlist</a>
-                                </li>
-            
-                                <li class="my-3">
-                                    <a id="playlist_4" href="#">Nome Playlist</a>
-                                </li>
-            
-                                <li class="my-3">
-                                    <a id="playlist_5" href="#">Nome Playlist</a>
-                                </li>
-            
-                                <li class="my-3">
-                                    <a id="playlist_6" href="#">Nome Playlist</a>
-                                </li>
-            
-                                <li>
-                                    <a id="playlist_7" href="#">Nome Playlist</a>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                    <!-- /Playlist options -->    
-                </div>
-                
-                <!-- Profile options -->
-                <div id="profile" class="d-flex flex-column disappear">
-                    <a href="#" class="d-flex align-items-center mx-3 pb-2 border-bottom border-grey">
-                        <img src="./assets/img/download.svg" alt="Icon depicting an arrow pointing down inside a circle">
-                        <div class="ml-3">Installa app</div>
-                    </a>
+    </div>
 
-                    <div id="user" class="d-flex align-items-center mt-3 mb-2 pl-3">
-                        <div class="user_img d-flex justify-content-center align-items-center bg-grey rounded-circle"></div>
-                        <div id="profile_name" class="text-white ml-3">John Doe</div>
-                    </div>
-                </div>
-                <!-- /Profile options -->
-
-                <!-- Profile options for XS devices -->
-                <div id="profile-xs" class="d-none appear-flex flex-column align-items-center">
-                    <a href="#" class="mb-3">
-                        <img src="./assets/img/download.svg" alt="Icon depicting an arrow pointing down inside a circle">
-                    </a>
-            
-                    <a href="#" class="user_img d-flex justify-content-center align-items-center bg-grey rounded-circle"></a>
-                </div>
-                <!-- /Profile options for XS devices -->
-            </nav>
-            <!-- /Left sidebar --> 
-
-            <!-- App content -->
-            <main class="d-flex flex-column w-100 px-0 text-grey">
-                <!-- Fixed upgrade bar -->
-                <div id="upgrade_bar" class="d-flex justify-content-end align-items-center fixed-top bg-fading-black">
-                    <a href="#" class="btn rounded-pill border border-white mr-3 px-5 bg-black text-white text-uppercase">Effettua l'upgrade</a>
-                </div>
-                <!-- /Fixed upgrade bar -->
-            
-                <!-- Song filters and categories -->
-                <ul id="filters" class="d-flex justify-content-center flex-wrap px-2 pt-4 mb-0 text-uppercase">
-                    <li class="mb-5 mr-4">
-                        <a class="position-relative" href="#">In evidenza</a>
-                    </li>
-                    <li class="mb-5 mr-4">
-                        <a href="#">Podcast</a>
-                    </li>
-                    <li class="mb-5 mr-4">
-                        <a href="#">Classifiche</a>
-                    </li>
-                    <li class="mb-5 mr-4">
-                        <a href="#">Generi e mood</a>
-                    </li>
-                    <li class="mb-5 mr-4">
-                        <a href="#">Nuove uscite</a>
-                    </li>
-                    <li class="mb-5 mr-4">
-                        <a href="#">Scopri</a>
-                    </li>
-                </ul>
-                <!-- /Song filters and categories -->
-
-                <!-- "Recently played" row of playlists -->
-                <div id="recent" class="d-flex flex-column pl-3 pr-1">
-                    <h1 class="pl-2 text-white">Recently played</h1>
-                    <div class="playlist_row container-fluid d-flex my-4">
-                        <div class="row w-100">
-                            <div class="playlist col-6 col-md-3 col-lg-2 d-flex flex-column mb-3 px-2">
-                                <a class="position-relative" href="#">
-                                    <img class="img-fluid" src="./assets/img/metal_lifting.jpg" alt="">
-                                    <div class="playlist_overlay position-absolute d-none w-100 h-100 bg-fading-black">
-                                        <i class="position-absolute far fa-play-circle"></i>
-                                    </div>
-                                </a>
-                                <a href="#">
-                                    <h2 class="mt-3 text-white text-center">Heavy Metal</h2>
-                                </a>                               
-                                <a href="#" class="text-center">
-                                    <span id="heavymetal">Subtitle</span>
-                                </a>
-                            </div>
-    
-                            <div class="playlist col-6 col-md-3 col-lg-2 d-flex flex-column mb-3 px-2">
-                                <a class="position-relative" href="#">
-                                    <img class="img-fluid" src="./assets/img/stranger.jpeg" alt="">
-                                    <div class="playlist_overlay position-absolute d-none w-100 h-100 bg-fading-black">
-                                        <i class="position-absolute far fa-play-circle"></i>
-                                    </div>
-                                </a>
-                                <a href="#">
-                                    <h2 class="mt-3 text-white text-center">Stranger Things, Vol. 1 (a Netflix Original Series Soundtrack)</h2>
-                                </a>
-                                <a href="#" class="text-center">
-                                    <span id="strangerthings">Kyle Dixon & Michael Stein</span>
-                                </a>
-                            </div>
-    
-                            <div class="playlist col-6 col-md-3 col-lg-2 d-flex flex-column mb-3 px-2">
-                                <a class="position-relative" href="#">
-                                    <img class="img-fluid" src="./assets/img/aquietplace.jpeg" alt="">
-                                    <div class="playlist_overlay position-absolute d-none w-100 h-100 bg-fading-black">
-                                        <i class="position-absolute far fa-play-circle"></i>
-                                    </div>
-                                </a>
-                                <a href="#">
-                                    <h2 class="mt-3 text-white text-center">A quiet place</h2>
-                                </a>                      
-                                <a href="#" class="text-center">
-                                    <span id="aquietplace">Subtitle</span>
-                                </a>
-                            </div>
-    
-                            <div class="playlist col-6 col-md-3 col-lg-2 d-flex flex-column mb-3 px-2">
-                                <a class="position-relative" href="#">
-                                    <img class="img-fluid" src="./assets/img/split.jpeg" alt="">
-                                    <div class="playlist_overlay position-absolute d-none w-100 h-100 bg-fading-black">
-                                        <i class="position-absolute far fa-play-circle"></i>
-                                    </div>
-                                </a>
-                                <a href="#">
-                                    <h2 class="mt-3 text-white text-center">Split</h2>
-                                </a>                           
-                                <a href="#" class="text-center">
-                                    <span id="split">Subtitle</span>
-                                </a>
-                            </div>
-    
-                            <div class="playlist col-6 col-md-3 col-lg-2 d-flex flex-column mb-3 px-2">
-                                <a class="position-relative" href="#">
-                                    <img class="img-fluid" src="./assets/img/cure.jpeg" alt="">
-                                    <div class="playlist_overlay position-absolute d-none w-100 h-100 bg-fading-black">
-                                        <i class="position-absolute far fa-play-circle"></i>
-                                    </div>
-                                </a>
-                                <a href="#">
-                                    <h2 class="mt-3 text-white text-center">A cure for wellness</h2>
-                                </a>                         
-                                <a href="#" class="text-center">
-                                    <span id="acureforwellness">Subtitle</span>
-                                </a>
-                            </div>
-    
-                            <div class="playlist col-6 col-md-3 col-lg-2 d-flex flex-column mb-3 px-2">
-                                <a class="position-relative" href="#">
-                                    <img class="img-fluid" src="./assets/img/sinister.jpeg" alt="">
-                                    <div class="playlist_overlay position-absolute d-none w-100 h-100 bg-fading-black">
-                                        <i class="position-absolute far fa-play-circle"></i>
-                                    </div>
-                                </a>
-                                <a href="#">
-                                    <h2 class="mt-3 text-white text-center">Sinister</h2>
-                                </a>                       
-                                <a href="#" class="text-center">
-                                    <span id="sinister">Subtitle</span>
-                                </a>
-                            </div>
-                        </div>   
-                    </div>
-                </div>
-                <!-- /"Recently played" row of playlists -->
-
-                <!-- "Created for you" row of playlists -->
-                <div id="foryou" class="d-flex flex-column pl-3 pr-1">
-                    <h1 id="created_for" class="pl-2 text-white">Creato per John Doe</h1>
-                    <span class="pl-2">Più ascolti, più saranno accurati i suggerimenti.</span>
-                    <div class="playlist_row container-fluid d-flex my-4">
-                        <div class="row w-100">
-                            <div class="playlist col-6 col-md-3 col-lg-2 d-flex flex-column mb-3 px-2">
-                                <a class="position-relative" href="#">
-                                    <img class="img-fluid" src="./assets/img/radar.jpeg" alt="">
-                                    <div class="playlist_overlay position-absolute d-none w-100 h-100 bg-fading-black">
-                                        <i class="position-absolute far fa-play-circle"></i>
-                                    </div>
-                                </a>
-                                <a href="#">
-                                    <h2 class="mt-3 text-white text-center">Release Radar</h2>
-                                </a>                               
-                            </div>
-    
-                            <div class="playlist col-6 col-md-3 col-lg-2 d-flex flex-column mb-3 px-2">
-                                <a class="position-relative" href="#">
-                                    <img class="img-fluid" src="./assets/img/mixdaily.jpeg" alt="">
-                                    <div class="playlist_overlay position-absolute d-none w-100 h-100 bg-fading-black">
-                                        <i class="position-absolute far fa-play-circle"></i>
-                                    </div>
-                                </a>
-                                <a href="#">
-                                    <h2 class="mt-3 text-white text-center">Daily Mix 1</h2>
-                                </a>
-                            </div>
-                        </div>   
-                    </div>
-                </div>
-                <!-- /"Created for you" row of playlists -->
-
-                <!-- "Most popular artists" row of playlists -->
-                <div id="popular" class="d-flex flex-column pl-3 pr-1">
-                    <h1 class="pl-2 text-white">Artisti più popolari</h1>
-                    <span class="pl-2">Più ascolti, più saranno accurati i suggerimenti.</span>
-                    <div class="playlist_row container-fluid d-flex my-4">
-                        <div class="row w-100">
-                            <div class="playlist col-6 col-md-3 col-lg-2 d-flex flex-column mb-3 px-2">
-                                <a class="position-relative" href="#">
-                                    <img class="img-fluid rounded-circle" src="./assets/img/youg.jpeg" alt="">
-                                    <div class="playlist_overlay position-absolute d-none w-100 h-100 bg-fading-black rounded-circle">
-                                        <i class="position-absolute far fa-play-circle"></i>
-                                    </div>
-                                </a>
-                                <a href="#">
-                                    <h2 class="mt-3 text-white text-center">Lana del Rey</h2>
-                                </a>                               
-                            </div>
-    
-                            <div class="playlist col-6 col-md-3 col-lg-2 d-flex flex-column mb-3 px-2">
-                                <a class="position-relative" href="#">
-                                    <img class="img-fluid rounded-circle" src="./assets/img/einaudi.jpeg" alt="">
-                                    <div class="playlist_overlay position-absolute d-none w-100 h-100 bg-fading-black rounded-circle">
-                                        <i class="position-absolute far fa-play-circle"></i>
-                                    </div>
-                                </a>
-                                <a href="#">
-                                    <h2 class="mt-3 text-white text-center">Ludovico Einaudi</h2>
-                                </a>
-                            </div>
-                        </div>   
-                    </div>
-                </div>
-                <!-- /"Most popular artists" row of playlists -->   
-            </main>
-            <!-- /App content -->
-
-            <!-- Now-playing bar -->
-            <footer id="now_playing" class="d-flex justify-content-between align-items-center px-sm-3 fixed-bottom bg-dark-grey">
-                <!-- Left section (current song) -->
-                <div id="song_info" class="d-flex align-items-center">
-                    <a href="#">
-                        <img class="img-fluid" src="./assets/img/sinister.jpeg" alt="">
-                    </a>
-                    <div class="disappear ml-2 mr-4">
-                        <a href="#" class="d-block text-white">Sinister</a>
-                        <a href="#" id="current_song" class="text-grey">Nome Brano</a>
-                    </div>
-                    <div class="disappear d-flex flex-wrap">
-                        <a href="#" class="mr-3">
-                            <i class="far fa-heart"></i>
-                        </a>
-                        <a href="#">
-                            <i class="far fa-folder"></i>
-                        </a>
-                    </div>
-                </div>
-                <!-- /Left section (current song) -->
-
-                <!-- Central section (media controls) -->
-                <div class="d-flex flex-column text-white w-50 mx-2 mx-sm-4">
-                    <div id="media_icons" class="d-flex justify-content-center align-items-center mb-3">
-                        <i class="mr-2 mr-sm-4 fas fa-random"></i>
-                        <i class="mr-2 mr-sm-4 fas fa-step-backward"></i>
-                        <i class="mr-2 mr-sm-4 px-2 far fa-play-circle"></i>
-                        <i class="mr-2 mr-sm-4 fas fa-step-forward"></i>
-                        <i class="fas fa-undo"></i>
-                    </div>
-                    <div id="media_bar" class="d-flex align-items-center">
-                        <span class="font-weight-normal">0:25</span>
-                        <div id="progress_bar" class="mx-4 rounded-pill">
-                            <div class="slider position-relative w-25 h-100 rounded-pill">
-                                <div class="slider_handle position-absolute d-none rounded-circle"></div>
-                            </div>
-                        </div>
-                        <span class="font-weight-normal">4:35</span>
-                    </div>
-                </div>
-                <!-- /Central section (media controls) -->
-
-                <!-- Right section (volume and miscellaneous) -->
-                <div id="volume" class="disappear align-items-center d-flex text-white">
-                    <i class="mr-3 bi bi-list-ul"></i>
-                    <i class="mr-3 fas fa-desktop"></i>
-                    <i class="mr-3 fas fa-volume-up"></i>
-                    <div id="volume_bar" class="rounded-pill">
-                        <div class="slider position-relative w-25 h-100 rounded-pill">
-                            <div class="slider_handle position-absolute d-none rounded-circle"></div>
-                        </div>
-                    </div>
-                </div>
-                <!-- /Right section (volume and miscellaneous) -->
-            </footer>
-            <!-- /Now-playing bar -->
-        </div>
-
-        <script src="./assets/js/app.js"></script>
-    </body>
+	</body>
 </html>
+
+<script id="results-template" type="text/x-handlebars-template">
+	// {% verbatim %}
+ //    {{#each songAlbums}}
+	// {% endverbatim %}
+ //    <div style="background-image: url({% verbatim %}{{ previewUrl }}{% endverbatim %})" class="cover"></div>
+ //    {% verbatim %}
+ //    {{/each}}
+	// {% endverbatim %}
+</script>
+
+<script src="http://cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0-alpha.1/handlebars.min.js"></script>
+
+<script type="text/javascript">
+// find template and compile items
+var templateSource = document.getElementById('results-template').innerHTML,
+    template = Handlebars.compile(templateSource),
+    resultsPlaceholder = document.getElementById('results'),
+    playingCssClass = 'playing',
+    audioObject = null;
+
+var fetchTracks = function (albumId, callback) {
+    $.ajax({
+        url: 'https://api.spotify.com/v1/albums/' + albumId,
+        success: function (response) {
+        	console.log("success!");
+            callback(response);
+        }
+    });
+};
+
+var searchByLyrics = function( query) {
+    var url = 'http://api.lyricsnmusic.com/songs?api_key=efee5f39bd2b6902960d1a8d44542f';
+    query = query.join(' ');
+    $.ajax({
+        url: url,
+        data: {
+            lyrics: query,
+        },
+        success: function(response) {
+            console.log(response);
+        }
+    })
+}
+
+var searchAlbums = function (query) {
+    query = query.slice(0, 2);
+    for (var i = 0; i < query.length; i++) {
+    	query[i] = capitalizeFirstLetter(query[i]);
+    }
+    query = query.join(' ');
+    var type = 'track';
+    var songObj, albumTitle, trackTitle, previewUrl, artist, query;
+    console.log(query);
+    $.ajax({
+        url: 'https://api.spotify.com/v1/search',
+        data: {
+            q: query,
+            type: type
+        },
+        success: function (response) {
+            console.log(response);
+            var responded = false;
+            /*
+            Query words, album title, track title
+            */
+            if (type == 'track' && response['tracks']['items'].length) {
+                var responded = true;
+                if (audioObject) {
+                    audioObject.pause();
+                }
+                audioObject = new Audio(response.tracks.items[0].preview_url);
+                audioObject.play();
+                songObj = response['tracks']['items'][0];
+            }
+
+            else if (type == 'album' && response['albums']['items'].length) {
+                var responded = true;
+                fetchTracks(response["albums"]["items"][0]['id'], function (data) {
+                    if (audioObject) {
+                        audioObject.pause();
+                    }
+                    audioObject = new Audio(data.tracks.items[0].preview_url);
+                    audioObject.play();
+                });
+            }
+
+            if (!responded) {
+                return;
+            }
+            songObj = response[type + 's']['items'][0];
+            albumTitle = songObj['album']['name'];
+            trackTitle = songObj['name'];
+            previewUrl = songObj['album']['images'][0]['url'];
+            artist = "";
+            for (var a in songObj['artists']) {
+                artist += songObj['artists'][a]['name'] + ", ";
+            }
+            artist = artist.slice(0, artist.length - 2);
+            // resultsPlaceholder.innerHTML = template(songInfo);
+            console.log(previewUrl);
+            resultsPlaceholder.innerHTML = "<p>Search Terms: " + query + "</p><p>Artist: " + artist + "</p><p>Album: " + albumTitle + "</p><p>Track: " + trackTitle +
+            "</p><p>" + "<div style='background-image: url(" + previewUrl + ")' class='cover'></div></p>";
+
+
+
+        }
+    });
+};
+
+function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+function getTags() {
+    $.ajax({
+        url: '/api',
+        success: function (response) {
+            var tags = response.tags;
+            var songs = response.songs;
+            searchAlbums(tags);
+            // console.log(tags, songs);
+            // if (songs && songs.length) {
+            //     getSongByArtistAndTitle(songs[0]);
+            // }
+            setTimeout(getTags, 10000);
+        }
+    });
+}
+
+function getSongByArtistAndTitle(song) {
+    if (!song) {
+        return;
+    }
+    console.log(song);
+    var baseurl = 'https://api.spotify.com/v1/search';
+    var query = '?q=' + song.title + '%20artist:' + song.artist.name + '&type=track';
+    $.ajax({
+        url: baseurl + query,
+        success: function (response) {
+            console.log(response);
+            if (response.tracks.items && response.tracks.items.length) {
+                if (audioObject) {
+                    audioObject.pause();
+                }
+                audioObject = new Audio(response.tracks.items[0].preview_url);
+                audioObject.play();
+                document.getElementById('song-title').innerHTML = song.title + song.artist.name;
+                document.getElementById('song-lyrics').innerHTML = song.context;
+            }
+        }
+    });
+}
+
+
+$(document).ready(function() {
+    getTags();
+})
+</script>
