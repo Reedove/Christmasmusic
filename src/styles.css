@@ -342,63 +342,6 @@ div.length input[type="range"] {
     opacity: 0.6;
   }
 }
-input[type=file]{
-  display: none;
-}
-.file-upload label{
-}
-.file-upload label:before{
-  content: 'Input file';
-  width: 0.9em;
-  height: 0.2em;
-  background-color: #00B5B5;
-  color: white;
-  padding: 0.7em 2.5em;
-  margin-right: 1em;
-  border-radius: 4px;
-}
-
-#file-input + label{
-  cursor: pointer;
-}
-
-.control, .control-icon{
-  width: 2em;
-  height: 2em;
-  transition: all .4s;
-  user-select: none;
-}
-
-.control:hover{
-  cursor: pointer;
-}
-
-.control-icon: hover{
-  color:#00a3a3;
-}
-
-.uk-card{
-  margin-top: 2em;
-}
-
-.theme-main{
-  color: #00B5B5;
-}
-
-input[type=input]{
-  content: ' ';
-  border: none;
-  border-bottom:2px solid #00B5B5;
-}
-
-input[type=input]:focus{
-  border: none;
-  border-bottom:2px solid #00B5B5;
-}
-
-.material-input-text{
-  background-color: white !important;
-}
 h1{
 	text-align:center;
 	font-size:80px;
