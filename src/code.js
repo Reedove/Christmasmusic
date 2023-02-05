@@ -23,63 +23,63 @@ $(function() {
 $('.jcarousel-prev').click(function() {
     $('.jcarousel').jcarousel('scroll', '-=1');
 	
-		$(".audio-avalanche")[0].pause();
-		$(".audio-the-nights")[0].pause();
-		$(".audio-dont-look-down")[0].pause();
+		$(".audio-alliwantforchristmas")[0].pause();
+		$(".audio-santababy")[0].pause();
+		$(".audio-hollyjollychristmas")[0].pause();
 		$(".play i").removeClass("fa-pause").addClass("fa-play");
 		$(".play").removeClass("active")
 	
 		if ($('#jcarousel-item1').hasClass('active')) {
-		$('.dont-look-down, .avalanche').removeClass('active');
-		$('.the-nights').addClass('active');
-		$(".song").html("The Nights");
-		$(".artist").html("Avicii");
-		$(".duration").html($(".audio-the-nights").duration);
+		$('.santababy, .avalanche').removeClass('active');
+		$('.the-alliwantforchristmas').addClass('active');
+		$(".song").html("alliwantforchristmas");
+		$(".artist").html("MariahCarey");
+		$(".duration").html($(".audio-alliwantforchristmas").duration);
 	};
 	
 	if ($('#jcarousel-item2').hasClass('active')) {
-		$('.the-nights, .avalanche').removeClass('active');
-		$('.dont-look-down').addClass('active');
-		$(".song").text("Don't Look Down");
-		$(".artist").text("Martin Garrix");
+		$('.alliwantforchristmas, .hollyjollychirstmas').removeClass('active');
+		$('.santababy').addClass('active');
+		$(".song").text("santababy");
+		$(".artist").text("ErhtaKitt");
 	};
 	
 	if ($('#jcarousel-item3').hasClass('active')) {
-		$('.the-nights, .dont-look-down').removeClass('active');
-		$('.avalanche').addClass('active');
-		$(".song").html("Avalanche");
-		$(".artist").html("Bring Me The Horizon");
+		$('.alliwantforchirstmas, .santababy').removeClass('active');
+		$('.hollyjollychristams').addClass('active');
+		$(".song").html("hollyjollychristmas");
+		$(".artist").html("Michaelbuble");
 	};
 });
 
 $('.jcarousel-next').click(function() {
     $('.jcarousel').jcarousel('scroll', '+=1');
 	
-		$(".audio-avalanche")[0].pause();
-		$(".audio-the-nights")[0].pause();
-		$(".audio-dont-look-down")[0].pause();
+		$(".audio-hollyjollychristmas")[0].pause();
+		$(".audio-alliwantforchristmas")[0].pause();
+		$(".audio-santababy")[0].pause();
 		$(".play i").removeClass("fa-pause").addClass("fa-play");
 		$(".play").removeClass("active")
 	
 				if ($('#jcarousel-item1').hasClass('active')) {
-		$('.dont-look-down, .avalanche').removeClass('active');
-		$('.the-nights').addClass('active');
-		$(".song").html("The Nights");
-		$(".artist").html("Avicii");
+		$('.alliwantforchirstmas, .santababy,erthakitt').removeClass('active');
+		$('.').addClass('active');
+		$(".song").html("alliwantforchirstmas");
+		$(".artist").html("mariahcary");
 	};
 	
 	if ($('#jcarousel-item2').hasClass('active')) {
-		$('.the-nights, .avalanche').removeClass('active');
-		$('.dont-look-down').addClass('active');
-		$(".song").html("Don't Look Down");
-		$(".artist").html("Martin Garrix");
+		$('.alliwantforchristmas, .santababy').removeClass('active');
+		$('.santababy').addClass('active');
+		$(".song").html("santababy");
+		$(".artist").html("erhtakitt");
 	};
 	
 	if ($('#jcarousel-item3').hasClass('active')) {
-		$('.the-nights, .dont-look-down').removeClass('active');
-		$('.avalanche').addClass('active');
-		$(".song").html("Avalanche");
-		$(".artist").html("Bring Me The Horizon");
+		$('.alliwantforchristmas, .santababy').removeClass('active');
+		$('.hollyjollychristmas').addClass('active');
+		$(".song").html("hollyjollychristmas");
+		$(".artist").html("michelbuble");
 	};
 });
 
@@ -106,26 +106,26 @@ $(".play").click(function() {
 	}
 	
 	if($(".play").hasClass("active") && $("#jcarousel-item3").hasClass("active")) {
-		var audio = $(".audio-avalanche")[0];
+		var audio = $(".audio-hollyjollychristmas")[0];
     audio.play();
 	} else {
-    var audio = $(".audio-avalanche")[0];
+    var audio = $(".audio-hollyjollychristmas")[0];
     audio.pause();
     }
 	
 	if($(".play").hasClass("active") && $("#jcarousel-item2").hasClass("active")) {
-		var audio = $(".audio-dont-look-down")[0];
+		var audio = $(".santababy")[0];
     audio.play();
 	} else {
-    var audio = $(".audio-dont-look-down")[0];
+    var audio = $(".santababy")[0];
     audio.pause();
     }
 	
 	if($(".play").hasClass("active") && $("#jcarousel-item1").hasClass("active")) {
-		var audio = $(".audio-the-nights")[0];
+		var audio = $(".audio-alliwantforchristmas")[0];
     audio.play();
 	} else {
-    var audio = $(".audio-the-nights")[0];
+    var audio = $(".audio-alliwamtforchtistmas")[0];
     audio.pause();
     }
 });
@@ -168,58 +168,4 @@ $(".volume-slider").slider({
 function setVolume(myVolume) {
     var myMedia = document.getElementByClass('audio-avalanche');
     myMedia.volume = myVolume;
-}
-var song = document.getElementById("audio");
-$(document).ready(function(){
-  
-  $('.uk-range').on('touchend mouseup', function(){
-    song.currentRime = $(this).val();
-  });
-  
-  $('.material-input-text').blur(function(){
-    $('audio').attr('src', $(this).val());
-    if(!$(this).val().endsWith(".mp3")){
-      alert("URL must end with .mp3");
-    }
-    $(this).val("");
-  });
-  
-  var isClicked = false;
-  $('.control-icon').on('click', function(){
-    isClicked = !isClicked;
-    if(!isClicked){
-      $(this).text('play_arrow');
-      song.pause();
-    }
-    if(isClicked){
-      $(this).text('pause_arrow');
-      song.play();
-    }
-  });
-});
-
-function setSongManually(path){
-  var blobURL = URL.createObjectURL(path);
-  $('#fileName').text(path.name);
-  $('audio').attr('src', blobURL);
-}
-
-function updateTime(audio){
-  var time = Math.floor(audio.currentTime);
-  formatTime(time);
-  $('.uk-range').attr('max', Math.floor(audio.duration));
-  $('.uk-range').attr('value', time);
-}
-
-function songLoaded(audio){
-  console.log(audio);
-}
-
-//Fromating the seconds into seconds and minutes
-function formatTime(time){
-  var secs = 0;
-  var mins = 0;
-  mins = time / 60;
-  secs = time % 60;
-  $('#time').text(Math.floor(mins) + " : " + secs);
 }
