@@ -1,4 +1,4 @@
-<h1> Streaming Christmas Music</h1>
+<h1>Christmas is Streaming</h1>
 
 <div class="container">
 	<div class="top">
@@ -28,8 +28,8 @@
 			<div class="jcarousel">
 				<ul>
         	<li><img src="https://musicwetrust.blob.core.windows.net/$web/1482435430-mariah-carey.jpg" alt="" /></li>
-        	<li><img src="https://i1.sndcdn.com/artworks-000110285449-17viu6-t500x500.jpg" alt="" /></li>
-					<li><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/308622/bmth-tts.jpg" alt="" /></li>
+        	<li><img src="https://musicwetrust.blob.core.windows.net/$web/_116324715_lastchristmas.jpg" alt="" /></li>
+					<li><img src="https://musicwetrust.blob.core.windows.net/$web/kitt.jpeg" alt="" /></li>
     		</ul>
 			</div>
 			
@@ -38,8 +38,8 @@
 		<ul class="jcarousel-pagination"></ul>
 		<div class="info">
 			<div class="name">
-				<h3 class="song">All I Want For Christmas is You</h3>
-				<p class="artist">Mariah Carey</p>
+				<h3 class="song">The Nights</h3>
+				<p class="artist">Avicii</p>
 			</div>
 		</div>
 	</div>
@@ -75,49 +75,17 @@
 	<div class="overlay"></div>
 </div>
 
-<audio class="audio-avalanche" src="http://emilcarlsson.se/assets/bring-me-the-horizon-avalanche.mp3" type="audio/mpeg"> 
+<audio class="audio-alliwantforchristmas" src="https://musicwetrust.blob.core.windows.net/audiocontainer/alliwantforchristmas.mp3" type="audio/mpeg"> 
  Your browser does not support the audio tag!
 </audio>
 
-<audio class="audio-dont-look-down" src="http://emilcarlsson.se/assets/Martin Garrix feat. Usher - Don't Look Down (Lyric Video).mp3" type="audio/mpeg"> 
+<audio class="audio-santababy" src="https://musicwetrust.blob.core.windows.net/audiocontainer/santababy.mp3" type="audio/mpeg"> 
  Your browser does not support the audio tag!
 </audio>
 
-<audio class="audio-the-nights" src="http://emilcarlsson.se/assets/Avicii - The Nights.mp3" type="audio/mpeg"> 
+<audio class="audio-hollyjollychristmas" src="https://musicwetrust.blob.core.windows.net/audiocontainer/hollyjollychristmas.mp3" type="audio/mpeg"> 
  Your browser does not support the audio tag!
 </audio>
-<head>
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet">
-</head>
-<!-- Input START -->
-<div class="uk-position-center">
-  <div class="uk-card uk-card-default uk-card-hover uk-grid-small uk-grid-match uk-card-body">
-      <label class="uk-card-title uk-align-center"></label>
-    <div class="file-upload uk-card-body">
-      <input type="file" id="file-input" onchange=" setSongManually(this.files[0]);" accept="audio/*"/>
-      <label for="file-input" id="fileName">Upload</label>
-    </div>
-    <div class="input-text">
-      <label style="margin-bottom:1rem;"></label>
-      <br>
-      <input type="input" class="material-input-text" />
-    </div>
-  </div>
-  <!-- End of INPUT -->
-  <div class="uk-card">
-    <div class="uk-grid-small uk-flex-middle" uk-grid>
-    <div class="uk-width-auto control" style="margin-top: 0.5rem">  
-      <i class="material-icons theme-main control-icon">play_arrow</i>
-    </div>
-    <input class="uk-width-expand uk-range" id="rangeBar" min="0" type="range" value="0" disabled/>
-    <label class="uk-width-auto" id="time">0:0</label>
-    </div>
-  </div>
-  <audio id="audio" src="" ontimeupdate="updateTime(this);" onloaded="songLoaded(this);" autoplay></audio>
-</div>
-
-
 
 
 
