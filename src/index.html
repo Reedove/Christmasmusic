@@ -1,89 +1,74 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>home</title>
-
-   <!-- font awesome cdn link  -->
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
-
-   <!-- custom css file link  -->
-   <link rel="stylesheet" href="css/style.css">
-
+   <title>Christmas Music Playlist</title>
 </head>
 <body>
+   <h2>Christmas Music Hits</h2> 
+   <p>Enjoy Christmas</p>
+   <p> Below....Play, Stream, Listen and Enjoy!!!!</p>
+   <img src="christmas-music-playlist-sketch.jpg"> 
 
-<section class="playlist">
-
-   <h3 class="heading">music playlist</h3>
-
-   <div class="box-container">
-
-   <?php
-      $select_songs = $conn->prepare("SELECT * FROM `songs`");
-      $select_songs->execute();
-      if($select_songs->rowCount() > 0){
-         while($fetch_song = $select_songs->fetch(PDO::FETCH_ASSOC)){
-   ?>
-   <div class="box">
-      <?php if($fetch_song['album'] != ''){ ?>
-         <img src="uploaded_album/<?= $fetch_song['album']; ?>" alt="" class="album">
-      <?php }else{ ?>
-         <img src="images/disc.png" alt="" class="album">
-      <?php } ?>
-      <div class="name"><?= $fetch_song['name']; ?></div>
-      <div class="artist"><?= $fetch_song['artist']; ?></div>
-      <div class="flex">
-         <div class="play" data-src="uploaded_music/<?= $fetch_song['music']; ?>"><i class="fas fa-play"></i><span>play</span></div>
-         <a href="uploaded_music/<?= $fetch_song['music']; ?>" download><i class="fas fa-download"></i><span>download</span></a>
-      </div>
-   </div>
-   <?php
-    }
-   }
-   ?>
-   <div class="box more-btn">
-      <a href="upload_music.php" class="btn">upload music</a>
-   </div>
-
-   </div>
-
-</section>
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="music-player">
-
-   <i class="fas fa-times" id="close"></i>
-
-   <div class="box">
-      <img src="" class="album" alt="">
-      <div class="name"></div>
-      <div class="artist"></div>
-      <audio src="" controls class="music"></audio>
-   </div>
-
-</div>
-
-
-
-
-
-
-<!-- custom js file link  -->
-<script src="js/script.js"></script>
+<figure>
    
-</body>
+ <figcaption>Listen to All I Want for Christmas by Maraih Carey</figcaption>
+    <audio controls>
+      <source src="https://musicwetrust.blob.core.windows.net/audiocontainer/alliwantforchristmas.mp3"  type="audio/mpeg">
+     <code>audio</code> 
+   </audio>
+</figure>
+
+<figure>
+    <figcaption>Listen to Last Christmas by Wham</figcaption>
+    <audio controls>
+     <source src="https://musicwetrust.blob.core.windows.net/audiocontainer/lastchristmas.mp3"  type="audio/mpeg">
+      <code>audio</code> 
+</audio>
+</figure>
+<figure>
+    <figcaption>Listen to Santa Baby by Eartha Kitt</figcaption>
+    <audio controls>
+   <source src="https://musicwetrust.blob.core.windows.net/audiocontainer/santababy.mp3"  type="audio/mpeg">
+      <code>audio</code> 
+</audio>
+</figure>
+<figure>
+   <figcaption>Listen to Holly Jolly Christmas by Michael Bublé</figcaption>
+   <audio controls>
+      <source src="https://musicwetrust.blob.core.windows.net/audiocontainer/hollyjollychristmas.mp3" type="audio/mpeg"> 
+     <code>audio</code> 
+    </audio>
+    </figure>
+     
+      <center>
+          <h1>Share Music</h1>
+          <h2>Upload your Christmas Covers</h2>
+          <input type="file"
+                  id="filel"
+                  name="upload">
+          <source src="https://musicwetrust.blob.core.windows.net/artist/artist..html">
+      </center>
+      
+        <h1>Vanilla JavaScript App</h1>
+        <p>Loading content from the API: <b id="name">...</b></p>
+        
+    
+        <script>
+        (async function() {
+            const { text } = await( await fetch(`/api/getartistinfo`)).json();
+            document.querySelector('#name').textContent = text;
+        }());
+        </script>
+  </body>
+
 </html>
+
+
+
+
+
+
+
