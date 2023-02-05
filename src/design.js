@@ -1,85 +1,33 @@
-// Sliders
+let playBtn = document.querySelectorAll('.playlist .box-container .box .play');
+let musicPlayer = document.querySelector('.music-player');
+let musicAlbum = musicPlayer.querySelector('.album');
+let musicName = musicPlayer.querySelector('.name');
+let musicArtist = musicPlayer.querySelector('.artist');
+let music = musicPlayer.querySelector('.music');
 
-Var Slider = Document.GetElementById('Song-Progress');
+playBtn.forEach(play =>{
 
-NoUiSlider.Create(Slider, {
-    Start: [ 20 ],
-    Range: {
-        'Min': [   0 ],
-        'Max': [ 100 ]
-    }
+   play.onclick = () =>{
+      let src = play.getAttribute('data-src');
+      let box = play.parentElement.parentElement;
+      let name = box.querySelector('.name');
+      let album = box.querySelector('.album');
+      let artist = box.querySelector('.artist');
+
+      musicAlbum.src = album.src;
+      musicName.innerHTML = name.innerHTML;
+      musicArtist.innerHTML = artist.innerHTML;
+      music.src = src;
+
+      musicPlayer.classList.add('active');
+
+      music.play();
+
+   }
+
 });
 
-Var Slider = Document.GetElementById('Song-Volume');
-
-NoUiSlider.Create(Slider, {
-    Start: [ 90 ],
-    Range: {
-        'Min': [   0 ],
-        'Max': [ 100 ]
-    }
-});
-
-
-// Tooltips
-
-$(Function () {
-  $('[Data-Toggle="Tooltip"]').Tooltip()
-})
-
-// Viewport Heights
-
-$(Window).On("Resize Load", Function(){
-  
-  Var TotalHeight = $(Window).Height();
-
-  Var HeaderHeight = $('.Header').OuterHeight();
-  Var FooterHeight = $('.Current-Track').OuterHeight();
-  Var PlaylistHeight = $('.Playlist').OuterHeight();
-  Var NowPlaying = $('.Playing').OuterHeight();
-
-  Var NavHeight = TotalHeight - (HeaderHeight + FooterHeight + PlaylistHeight + NowPlaying);
-  Var ArtistHeight = TotalHeight - (HeaderHeight + FooterHeight);
-
-  Console.Log(TotalHeight);
-  
-  $(".Navigation").Css("Height" , NavHeight);
-  $(".Artist").Css("Height" , ArtistHeight);
-  $(".Social").Css("Height" , ArtistHeight);
-  
-});
-    
-
-
-  
-
-// Collapse Toggles
-
-$(".Navigation__list__header").On( "Click" , Function() {
-  
-  $(This).ToggleClass( "Active" );
-  
-});
-
-
-// Media Queries
-
-$(Window).On("Resize Load", Function(){
-    If ($(Window).Width() <= 768){	
-        
-    $(".Collapse").RemoveClass("In");
-    
-    $(".Navigation").Css("Height" , "Auto");
-    
-    $(".Artist").Css("Height" , "Auto");
-    
-    }	
-});
-
-$(Window).On("Resize Load", Function(){
-    If ($(Window).Width() > 768){	
-        
-    $(".Collapse").AddClass("In");
-    
-    }	
-});
+document.querySelector('#close').onclick = () =>{
+   musicPlayer.classList.remove('active');
+   music.pause();
+}
