@@ -1,12 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
-    <title>Vanilla JavaScript App</title>
+	<script src="./index.js"><</script>
+	<link rel="stylesheet" href="./style.css" />
+
 </head>
+ 
 
 
 <h1>Christmas is Streaming</h1>
@@ -98,20 +96,7 @@
  Your browser does not support the audio tag!
 </audio>
 
-<body>
-   <main>
-   <h1>Vanilla JavaScript App</h1>
-   <p>Loading content from the API: <b id="name">...</b></p>
-   </main>
 
-   <script>
-   (async function() {
-       const { text } = await( await fetch(`/api/message`)).json();
-       document.querySelector('#name').textContent = text;
-   }());
-   </script>
-</body>
+
 
 </html>
-
-
