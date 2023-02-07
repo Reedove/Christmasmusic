@@ -1,9 +1,4 @@
 
-<head>
-	<script src="./index.html"></script>
-	<link rel="stylesheet" href="./style.css" />
-</head>
-
 $(function () {
 	var playerTrack = $("#player-track"),
 	  bgArtwork = $("#bg-artwork"),
